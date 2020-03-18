@@ -1,4 +1,4 @@
-/* 
+/*
 Este componente se usará para hacer que el Main y todos los componentes
 hijos tengan acceso a las acciones y los datos. Para no estar pasando todo
 por props entre los hijos, Redux tiene un componente llamado "connect", ese es
@@ -7,7 +7,7 @@ puedan acceder desde cualquier hijo de Main.
 */
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actionCreators from '../actions/actionCreators'
+import * as actions from '../actions'
 
 import Main from './Main'
 
@@ -20,7 +20,7 @@ function mapStateToProps(state) {
 
 // 'dispatch' es la función que puede verse en $r.store.dispatch
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
+  return bindActionCreators(actions, dispatch)
 }
 
 // Hay que decir qué componente va a recibir como props los datos (mapStateToProps)

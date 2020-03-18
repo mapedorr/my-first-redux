@@ -1,9 +1,12 @@
 // Esta función aplica lo que en Redux se conoce como composición de reducers.
 // Es algo así como un sub-reducer que sólo es conocido y usado por uno de los
 // reducer registrado en la aplicación.
-function postComments(state = [], action) {
+
+import { ADD_COMMENT, REMOVE_COMMENT } from '../actions'
+
+const postComments = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_COMMENT':
+    case ADD_COMMENT:
       // Retornar el estado recibido pero con el nuevo comentario agregado
       return [
         ...state,
@@ -12,22 +15,22 @@ function postComments(state = [], action) {
           text: action.comment
         }
       ]
-    case 'REMOVE_COMMENT':
+    case REMOVE_COMMENT:
       return [
         // Copiar el arreglo hasta el elemento a eliminar
         ...state.slice(0, action.i),
         // Copiar el arreglo después del elemento a eliminar
-        ...state.slice(action.i + 1),
+        ...state.slice(action.i + 1)
       ]
     default:
       return state
   }
 }
 
-function comments(state = [], action) {
+const comments = (state = [], action) => {
   if (typeof action.postId !== 'undefined') {
     return {
-      // El estado original
+      // El estado original. Tiene el objeto de comentarios: root://data/comments.js
       ...state,
       // Sobrescribir el post que se está modificando
       [action.postId]: postComments(state[action.postId], action)

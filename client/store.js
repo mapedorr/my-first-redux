@@ -1,4 +1,4 @@
-/* 
+/*
 La forma en como funciona Redux y su store es como un historial de acciones.
 En cierto sentido me hace pensar en el patrón de programación de juegos Command...
 o no recuerdo cuál es el que almacena acciones (como un historial) que luego se
@@ -14,12 +14,16 @@ Las acciones que almacena el historial de Redux son objetos.
 */
 
 // Importar cosas de Redux
-import { createStore, compose } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import { syncHistoryWithStore } from 'react-router-redux'
 import { browserHistory } from 'react-router'
 
+// Importar el Redux Thunk
+import thunk from 'redux-thunk'
+
 // Importar el root reducer
-import rootReducer from './reducers/index'
+import reducer from './reducers/index'
+
 
 // Importar datos quemados
 import comments from './data/comments'
@@ -29,17 +33,22 @@ import posts from './data/posts'
 // Para cada estado se debe crear un reducer.
 const defaultState = { comments, posts }
 
-// Para que Redux Tools pueda tener acceso al store y darnos control sobre lo que
-// ocurre, hay que "mejorar" el store
-const enhancers = compose(
-  window.devToolsExtension ? window.devToolsExtension : (f) => f
+/* Es necesario combinar el middleware y la cosa que hace funcionar el Redux Tools
+en una única función para que no haya problema al crear el STORE.
+Tomado de 👉 https://stackoverflow.com/questions/38074154/redux-the-previous-state-received-by-the-reducer-has-unexpected-type-of-funct
+*/
+const middlewareAndTools = compose(
+  applyMiddleware(thunk),
+  /* Para que Redux Tools pueda tener acceso al store y darnos control sobre lo
+  que ocurre, hay que "mejorar" el store */
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 // Crear el Store
 const store = createStore(
-  rootReducer,
+  reducer,
   defaultState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  middlewareAndTools
 )
 
 // ╔═══════════════════════════════════════════════════════════════════════════╗

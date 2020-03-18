@@ -3,6 +3,10 @@ import Photo from './Photo'
 import Comments from './Comments'
 
 class Single extends Component {
+  handleSandwiches() {
+    this.props.makeASandwichWithSecretSauce('Carenalga')
+  }
+
   render() {
     /* La llave del params (postId) se definió en reduxtagram.js, al crear
       el <Route> que carga este componente cuando se hace clic en la imagen. */

@@ -37,7 +37,7 @@ export default class Photo extends Component {
                 className='likes'
                 /* Aquí se usa bind para que la función no se ejecute en el
                 pageLoad de React. */
-                onClick={this.props.increment.bind(null, idx)}>
+                onClick={this.props.incrementLike.bind(null, idx)}>
                 ❤ {post.likes}
               </button>
               <Link className='button' to={`/view/${post.code}`}>
