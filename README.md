@@ -15,6 +15,10 @@ Hecho con base en el curso de [@Wes Bos](https://twitter.com/wesbos) 👉 [Learn
 
 Crear un STORE en lugar de usar los diferentes state de los múltiples componentes que puede tener una aplicación React.
 
+*"Action creators create objects → objects are dispatched to the store → the store invokes reducers → reducers generate new state → listeners are notified of state updates."*
+
+👆 Tomado de [Thunks in Redux: The Basics](https://medium.com/fullstack-academy/thunks-in-redux-the-basics-85e538a3fe60) 👆
+
 ## Acciones
 Ese STORE se actualiza usando acciones. Cada acción está compuesta por dos cosas: un tipo (lo que pasó) y unos datos (payload).
 
@@ -58,9 +62,12 @@ const store = createStore(
 ```
 ## Por hacer
 
-- [ ] Tomar los datos de una API haciendo uso de: [Redux Thunk](https://github.com/reduxjs/redux-thunk) o [Redux Saga](https://redux-saga.js.org/). 
+- [ ] Tomar los datos de una API haciendo uso de: [Redux Thunk](https://github.com/reduxjs/redux-thunk) o [Redux Saga](https://redux-saga.js.org/).
 
   *Los reductores no pueden funcionar de manera asíncrona por ser funciones puras. Los módulos que exponen estas dos librerías tienen funciones para manejar la parte asíncrona antes de pasar los datos a los reductores (o sea, antes de disparar las acciones)*.
+
+  - [ ] Redux-Thunk
+  - [ ] Redux-Saga
 
 - [ ] Hacer que la aplicación ✨ se vea menos paila ✨. El estilo visual que esta tiene ahora mismo no me gusta en absoluto.
 - [ ] Actualizar los textos en inglés para este README.
