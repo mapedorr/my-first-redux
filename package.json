@@ -1,5 +1,5 @@
 {
-  "name": "learn-redux",
+  "name": "my-first-react-redux",
   "version": "1.0.0",
   "description": ":) ",
   "scripts": {
@@ -12,11 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wesbos/Learn-Redux.git"
+    "url": "https://github.com/mapedorr/my-first-redux.git"
   },
-  "author": "Wes Bos",
-  "license": "MIT",
-  "homepage": "https://github.com/wesbos/Learn-Redux",
+  "author": "mapedorr",
+  "license": "Apache License 2.0",
+  "homepage": "",
   "dependencies": {
     "@sentry/browser": "^5.14.2",
     "babel-core": "^6.7.7",
@@ -33,7 +33,6 @@
     "eslint-plugin-babel": "^3.2.0",
     "eslint-plugin-react": "^5.0.1",
     "express": "^4.13.4",
-    "raven-js": "^2.3.0",
     "react": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
     "react-dom": "^15.0.2",
@@ -56,6 +55,7 @@
     "expect": "^1.18.0",
     "expect-jsx": "^2.5.1",
     "mocha": "^2.4.5",
+    "opn": "^6.0.0",
     "react-addons-test-utils": "^15.0.2"
   }
 }
