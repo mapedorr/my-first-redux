@@ -7,7 +7,7 @@ import App from './components/App'
 import PhotoGrid from './components/PhotoGrid'
 import Single from './components/Single'
 // import React's router
-import { Router, Route, IndexRoute, browserHistory } from 'react-router'
+import { Router, Route, IndexRoute } from 'react-router'
 import { Provider } from 'react-redux'
 import store, { history } from './store'
 // import Sentry

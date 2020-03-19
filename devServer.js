@@ -27,5 +27,5 @@ app.listen(7770, 'localhost', function(err) {
   }
 
   console.log('Listening at http://localhost:7770')
-  opn('http://localhost:7770')
+  // opn('http://localhost:7770')
 })
