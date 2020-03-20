@@ -11,14 +11,8 @@ se agrega a un evento onClick u onMouseEnter...
     por la lógica que se ponga dentro de la función que la representa.
 */
 
-/*
-import { INCREMENT_LIKES } from '../actions'
- */
 import { GET_POSTS, GET_POSTS_ERR } from '../actions'
 
-/*
-? Al parecer lo que hace esto es crear una propiedad 'posts' dentro del state de Redux.
- */
 const posts = (state = [], action) => {
   /* Redux usa programación funcional, así que no se modifican los objetos sino
   una copia de los mismos. Eso hace que la función sea pura, que es lo que busca
@@ -29,13 +23,6 @@ const posts = (state = [], action) => {
 
   /* Este state es el arreglo de posts. root://data/posts.js */
   switch (action.type) {
-    /* case INCREMENT_LIKES:
-      const i = action.index
-      return [
-        ...state.slice(0, i), // Copia arreglo antes elemento que se modifica
-        { ...state[i], likes: state[i].likes + 1 },
-        ...state.slice(i + 1) // Copia arreglo después elemento que se modifica
-      ] */
     case GET_POSTS:
       return [...state, ...action.posts]
     case GET_POSTS_ERR:

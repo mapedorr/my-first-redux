@@ -6,10 +6,6 @@ import css from './styles/style.styl'
 
 // import components
 import App from './components/App'
-
-/* import PhotoGrid from './components/PhotoGrid'
-import Single from './components/Single' */
-
 import Home from './components/Home'
 import Posts from './components/Posts'
 import Albums from './components/Albums'
@@ -44,9 +40,7 @@ const router = (
         <IndexRoute component={Home}></IndexRoute>
         <Route path='/posts' component={Posts}></Route>
         <Route path='/albums' component={Albums}></Route>
-        {/* <Route path='/photos/:albumId' component={Photos}></Route> */}
         <Route path='/todos' component={Todos}></Route>
-        {/* <Route path='/view/:postId' component={Single}></Route> */}
       </Route>
     </Router>
   </Provider>

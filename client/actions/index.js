@@ -9,14 +9,6 @@ click, out... son cosas que pasan pero no generan ningún cambio si no hay algo
 lógico que las use. 👉👉👉 Para eso están los reducers.
 */
 
-/*
-export const INCREMENT_LIKES = 'INCREMENT_LIKES'
-export const ADD_COMMENT = 'ADD_COMMENT'
-export const REMOVE_COMMENT = 'REMOVE_COMMENT'
-export const MAKE_SANDWICH = 'MAKE_SANDWICH'
-export const APOLOGIZE = 'APOLOGIZE'
- */
-
 // * ---------------------------------------------------------------------------
 // * Redux-Thunk actions -------------------------------------------------------
 export const GET_POSTS = 'GET_POSTS'
@@ -126,29 +118,3 @@ export const getAllAlbums = () => {
 // * ------------------------------------------------------- Redux-Thunk actions
 // * ---------------------------------------------------------------------------
 
-/*
-// Acción para incrementar los likes en una foto
-export const incrementLike = (index) => {
-  return {
-    type: INCREMENT_LIKES,
-    index
-  }
-}
-// Acción para añadir un comentario a una foto
-export const addComment = (postId, author, comment) => {
-  return {
-    type: ADD_COMMENT,
-    postId,
-    author,
-    comment
-  }
-}
-// Acción para remover un comentario de una foto
-export const removeComment = (postId, i) => {
-  return {
-    type: REMOVE_COMMENT,
-    postId,
-    i
-  }
-}
- */
