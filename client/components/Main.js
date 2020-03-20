@@ -8,6 +8,7 @@ export default class Main extends Component {
       <div>
         <div className='site_wrapper'>
           <Header {...this.props} />
+
           {/*
           El children lo pasa el Router y se configura con el <IndexRoute> o
           un <Route> en "reduxstagram.js".
@@ -19,6 +20,7 @@ export default class Main extends Component {
           <main className="page_content">
             {React.cloneElement(this.props.children, this.props)}
           </main>
+
           <Footer />
         </div>
       </div>

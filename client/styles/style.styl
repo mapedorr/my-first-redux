@@ -1,5 +1,6 @@
 @import '_normalize.styl';
 @import '_variables.styl';
+@import '_interpolations.styl';
 @import '_typography.styl';
 @import '_animations.styl';
 
@@ -9,12 +10,40 @@ shadows = 1ch 1ch 0 0px _black;
 
 body {
   background: _blue;
+  overflow: hidden;
+  height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: 100;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 .site_wrapper {
   display: flex;
   flex-direction: column !important;
   height: 100vh;
+}
+
+.c_y {
+  color: _yellow;
+}
+
+.c_p {
+  color: _pink;
+}
+
+.c_lb {
+  color: _light_blue;
+}
+
+.h-100 {
+  height 100%
 }
 
 /*
@@ -44,17 +73,18 @@ H E A D E R
     z-index: -1;
     width: 100%;
     display: block;
-    background-color: _dark_cyan;
     content: '';
     height: 7px;
   }
 
   &:before {
     top: 0;
+    background-color: _cyan;
   }
 
   &:after {
     bottom: 0;
+    background-color: _dark_cyan;
   }
 
   h1 {
@@ -88,7 +118,7 @@ H E A D E R
         font-size: 1.2rem;
         text-decoration: none;
         color: _blue;
-        padding: 0.8rem 1rem;
+        padding: 1.3rem 1rem;
         margin: 0 0.4rem;
         text-transform: uppercase;
 
@@ -129,28 +159,140 @@ H E A D E R
 M A I N  C O N T E N T
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
  */
+.to_top {
+  float: right;
+  background-color: transparent;
+  box-shadow: none;
+  padding: 0;
+  line-height: 1.5rem;
+  color: _white;
+
+  &:before, &:after {
+    content: '\25b2\a0';
+    color: _cyan;
+  }
+
+  &:before {
+    content: '\25b2\a0';
+  }
+
+  &:after {
+    content: '\a0\25b2';
+  }
+}
+
 .page_content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex_center();
   flex-grow: 1;
   margin: 4.5rem 2rem 1rem;
-  padding: 2rem 0 4rem;
+  padding: 2rem 0 0;
   border: 2px solid _white;
+  overflow-y: auto !important;
+}
+
+.home_page {
+  h1 {
+    selection_transparent(_white)
+  }
 }
 
 .posts_page {
-  color: _light_blue;
+  .post_wrapper {
+    padding: 1rem;
+    text-align: left;
+    background-color: _light_blue;
+    color: _grey;
+    margin: 0 1rem 2rem;
+
+    .post_title {
+      margin: 0 0 2rem 0;
+      border-bottom: 1px solid _red;
+      color: _yellow !important;
+      font-weight: 200;
+      text-transform: uppercase;
+      font-size: 1.6rem;
+      selection_color(_pink);
+    }
+
+    .post_body {
+      color: _pink;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      selection_color(_yellow);
+    }
+
+    .comment_wrapper {
+      display: flex;
+      margin: 0 auto;
+      padding: 8px;
+      background-color: _blue;
+      border: 4px double _white;
+
+      p {
+        font-size: 1.2rem;
+
+        &.comment_email {
+          color: _white;
+          text-decoration: underline;
+          selection_color(_black);
+        }
+
+        &.comment_body {
+          margin: 0 0.5rem 0 2rem;
+          selection_color(_dark_grey);
+        }
+      }
+    }
+  }
 }
 
 .albums_page {
-  color: _red;
+  display: flex;
+  flex-wrap: wrap;
+
+  .album {
+    flex-basis: calc(33.333% - 4rem);
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex_center();
+    margin: 0 2rem 2rem 2rem;
+    position: relative;
+    text-align: center;
+    height: 10rem;
+
+    .album_title {
+      flex_center();
+      height: 100%;
+      width: 100%;
+      text-decoration: none;
+      background: _green;
+      box-shadow: big-shadows;
+
+      &:hover {
+        background: _light_green;
+      }
+
+      &:active {
+        color: _yellow;
+      }
+
+      span {
+        padding: 0 1rem;
+        font-size: 1.8rem;
+      }
+    }
+  }
 }
 
 .todos_page {
   color: _yellow;
+
+  h1 {
+    selection_color(_pink)
+  }
 }
 
+/*
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
@@ -172,7 +314,8 @@ M A I N  C O N T E N T
     }
   }
 }
-
+ */
+/*
 .single-photo {
   @extend .grid-figure;
   max-width: 900px;
@@ -206,7 +349,8 @@ M A I N  C O N T E N T
   margin-top: -2rem;
   max-width: none;
 }
-
+ */
+/*
 // Comments
 .remove-comment {
   background: none;
@@ -267,11 +411,11 @@ M A I N  C O N T E N T
   top: 50%;
   pointer-events: none;
 }
-
+ */
 /*
   Buttons
 */
-.control-buttons {
+/* .control-buttons {
   display: flex;
   justify-content: space-between;
 }
@@ -295,42 +439,14 @@ button, .button {
     outline: 0;
   }
 }
-
-/*
-  Cowboy style speech bubble - you should probably use an SVG for this if you are doing more icons.
-*/
-.speech-bubble {
-  size = 1.25rem;
-  width: size * 1.2;
-  height: size;
-  background: blue;
-  display: inline-block;
-  border-radius: 50%;
-  position: relative;
-
-  &:after {
-    display: inline-block;
-    position: absolute;
-    content: '';
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 size size 0;
-    border-color: transparent blue transparent transparent;
-    top: 30%;
-    left: 0;
-  }
-}
-
+ */
 /*
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
 F O O T E R
 ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
  */
 .footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex_center();
   text-align: center;
   width: 100%;
   background-color: _black;

@@ -18,28 +18,28 @@ export default class Header extends Component {
               <Link
                 to='/'
                 className={this.getLocation() === '' ? 'active' : ''}>
-                Home
+                <span className='p'>H</span>ome
               </Link>
             </li>
             <li>
               <Link
                 to='/posts'
                 className={this.getLocation() === 'posts' ? 'active' : ''}>
-                Posts
+                <span className='p'>P</span>osts
               </Link>
             </li>
             <li>
               <Link
                 to='/albums'
                 className={this.getLocation() === 'albums' ? 'active' : ''}>
-                Albums
+                <span className='p'>A</span>lbums
               </Link>
             </li>
             <li>
               <Link
                 to='/todos'
                 className={this.getLocation() === 'todos' ? 'active' : ''}>
-                ToDos
+                <span className='p'>T</span>oDos
               </Link>
             </li>
           </ul>

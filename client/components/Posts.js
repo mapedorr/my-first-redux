@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
+import Post from './Post'
 
 export default class Posts extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.getAllPosts()
   }
 
   render() {
     return (
-      <div className='posts_page'>
-        {/* <h1>Aquí se muestrarán los POSTS</h1> */}
+      <div className='posts_page h-100'>
         {this.props.posts.map((post, idx) => (
-          <p key={idx}>{post.title}</p>
+          <Post post={post} key={idx} {...this.props} />
         ))}
       </div>
     )

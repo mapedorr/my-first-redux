@@ -9,16 +9,26 @@ click, out... son cosas que pasan pero no generan ningún cambio si no hay algo
 lógico que las use. 👉👉👉 Para eso están los reducers.
 */
 
+/*
 export const INCREMENT_LIKES = 'INCREMENT_LIKES'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 export const MAKE_SANDWICH = 'MAKE_SANDWICH'
 export const APOLOGIZE = 'APOLOGIZE'
+ */
 
+// * ---------------------------------------------------------------------------
+// * Redux-Thunk actions -------------------------------------------------------
 export const GET_POSTS = 'GET_POSTS'
+export const GET_POSTS_ERR = 'GET_POSTS_ERR'
+export const GET_COMMENTS_FOR = 'GET_COMMENTS_FOR'
+export const GET_COMMENTS_FOR_ERR = 'GET_COMMENTS_FOR_ERR'
+export const GET_ALBUMS = 'GET_ALBUMS'
+export const GET_ALBUMS_ERR = 'GET_ALBUMS_ERR'
 
 const BASE = 'https://jsonplaceholder.typicode.com'
 
+// ┌─┤ POSTS ├─────────────────────────────────────────────────────────────────┐
 const fetchPosts = () => {
   return fetch(`${BASE}/posts`).then((response) => response.json())
 }
@@ -30,15 +40,93 @@ const getPosts = (posts) => {
   }
 }
 
+const getPostsError = (msg, error) => {
+  return {
+    type: GET_POSTS_ERR,
+    msg,
+    error
+  }
+}
+
 export const getAllPosts = () => {
   return (dispatch) => {
     return fetchPosts().then(
       (posts) => dispatch(getPosts(posts)),
-      (error) => dispatch(apologize('The Sandwich Shop', forPerson, error))
+      (error) => dispatch(getPostsError('Error getting posts', error))
     )
   }
 }
+// └───────────────────────────────────────────────────────────────────────────┘
 
+// ┌─┤ COMMENTS ├──────────────────────────────────────────────────────────────┐
+const fetchComments = (postId) => {
+  return fetch(`${BASE}/comments?postId=${postId}`).then((response) =>
+    response.json()
+  )
+}
+
+const getCommentsFor = (comments, postId) => {
+  return {
+    type: GET_COMMENTS_FOR,
+    comments,
+    postId
+  }
+}
+
+const getCommentsError = (msg, postId, error) => {
+  return {
+    type: GET_COMMENTS_ERR,
+    msg,
+    postId,
+    error
+  }
+}
+
+export const getAllCommentsFor = (postId) => {
+  return (dispatch) => {
+    return fetchComments(postId).then(
+      (comments) => dispatch(getCommentsFor(comments, postId)),
+      (error) =>
+        dispatch(getCommentsError('Error getting comments', postId, error))
+    )
+  }
+}
+// └───────────────────────────────────────────────────────────────────────────┘
+
+// ┌─┤ ALBUMS ├────────────────────────────────────────────────────────────────┐
+const fetchAlbums = () => {
+  return fetch(`${BASE}/albums`).then((response) => response.json())
+}
+
+const getAlbums = (albums) => {
+  return {
+    type: GET_ALBUMS,
+    albums
+  }
+}
+
+const getAlbumsError = (msg, error) => {
+  return {
+    type: GET_ALBUMS_ERR,
+    msg,
+    error
+  }
+}
+
+export const getAllAlbums = () => {
+  return (dispatch) => {
+    return fetchAlbums().then(
+      (albums) => dispatch(getAlbums(albums)),
+      (error) => dispatch(getAlbumsError('Error getting albums', error))
+    )
+  }
+}
+// └───────────────────────────────────────────────────────────────────────────┘
+
+// * ------------------------------------------------------- Redux-Thunk actions
+// * ---------------------------------------------------------------------------
+
+/*
 // Acción para incrementar los likes en una foto
 export const incrementLike = (index) => {
   return {
@@ -63,42 +151,4 @@ export const removeComment = (postId, i) => {
     i
   }
 }
-
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
-// Acciones de prueba para Redux-Thunk
-const fetchSecretSauce = () => {
-  return fetch(
-    'https://jsonplaceholder.typicode.com/todos/1'
-  ).then((response) => response.json())
-}
-
-const makeASandwich = (forPerson, secretSauce) => {
-  return {
-    type: MAKE_SANDWICH,
-    forPerson,
-    secretSauce
-  }
-}
-
-const apologize = (fromPerson, toPerson, error) => {
-  return {
-    type: APOLOGIZE,
-    fromPerson,
-    toPerson,
-    error
-  }
-}
-
-export const makeASandwichWithSecretSauce = (forPerson) => {
-  // We can invert control here by returning a function - the "thunk".
-  // When this function is passed to `dispatch`, the thunk middleware will intercept it,
-  // and call it with `dispatch` and `getState` as arguments.
-  // This gives the thunk function the ability to run some logic, and still interact with the store.
-  return (dispatch) => {
-    return fetchSecretSauce().then(
-      (sauce) => dispatch(makeASandwich(forPerson, sauce)),
-      (error) => dispatch(apologize('The Sandwich Shop', forPerson, error))
-    )
-  }
-}
-// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */

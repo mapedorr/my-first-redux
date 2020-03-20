@@ -24,7 +24,7 @@ import thunk from 'redux-thunk'
 // Importar el root reducer
 import reducer from './reducers/index'
 
-
+/*
 // Importar datos quemados
 import comments from './data/comments'
 import posts from './data/posts'
@@ -32,6 +32,7 @@ import posts from './data/posts'
 // Crear objeto que contendrá los datos cargados por defecto
 // Para cada estado se debe crear un reducer.
 const defaultState = { comments, posts }
+ */
 
 /* Es necesario combinar el middleware y la cosa que hace funcionar el Redux Tools
 en una única función para que no haya problema al crear el STORE.

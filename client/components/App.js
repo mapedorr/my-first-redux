@@ -12,9 +12,14 @@ import * as actions from '../actions'
 import Main from './Main'
 
 function mapStateToProps(state) {
+  /*
+  ! Esto es lo que hace que se carguen los objetos en el STATE. Por eso dentro de
+  ! cada reducer el estado es el objeto con el mismo nombre.
+  */
   return {
     posts: state.posts,
-    comments: state.comments
+    comments: state.comments,
+    albums: state.albums
   }
 }
 

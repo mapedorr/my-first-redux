@@ -5,7 +5,7 @@ export default class Footer extends Component {
     return (
       <footer className='footer'>
         <h3>
-          Made by <span>Carenalga</span>
+          Made by <span>Mapedorr</span> <span>(or Carenalga)</span>
         </h3>
       </footer>
     )
