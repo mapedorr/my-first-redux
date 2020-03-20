@@ -11,11 +11,149 @@ body {
   background: _blue;
 }
 
+.site_wrapper {
+  display: flex;
+  flex-direction: column !important;
+  height: 100vh;
+}
+
+/*
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+H E A D E R
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */
+.navbar_menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 4rem;
+  background-color: _cyan;
+  color: _dark_pink;
+  text-align: left;
+  z-index: 4;
+  border-bottom: 2px solid _black;
+
+  &:before, &:after {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    display: block;
+    background-color: _dark_cyan;
+    content: '';
+    height: 7px;
+  }
+
+  &:before {
+    top: 0;
+  }
+
+  &:after {
+    bottom: 0;
+  }
+
+  h1 {
+    display: inline;
+    margin: 0 1.2rem;
+    padding: 0;
+    font-size: 2rem;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        color: _pink;
+      }
+    }
+  }
+
+  ul {
+    margin: 0 1px 0 0;
+    padding: 0;
+    display: inline-block;
+
+    li {
+      display: inline-block;
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      a {
+        display: block;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: _blue;
+        padding: 0.8rem 1rem;
+        margin: 0 0.4rem;
+        text-transform: uppercase;
+
+        &:focus {
+          outline: none;
+        }
+
+        &:before, &:after {
+          font-size: 0.9em;
+        }
+
+        &:before {
+          content: '\2503';
+          margin-right: 4px;
+        }
+
+        &:after {
+          content: '\2503';
+          margin-left: 4px;
+        }
+
+        &:hover {
+          color: _yellow;
+          background-color: _dark_red;
+        }
+
+        &.active {
+          background-color: _dark_cyan;
+          color: _white;
+        }
+      }
+    }
+  }
+}
+
+/*
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+M A I N  C O N T E N T
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */
+.page_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin: 4.5rem 2rem 1rem;
+  padding: 2rem 0 4rem;
+  border: 2px solid _white;
+}
+
+.posts_page {
+  color: _light_blue;
+}
+
+.albums_page {
+  color: _red;
+}
+
+.todos_page {
+  color: _yellow;
+}
+
 .photo-grid {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .grid-figure {
@@ -181,5 +319,37 @@ button, .button {
     border-color: transparent blue transparent transparent;
     top: 30%;
     left: 0;
+  }
+}
+
+/*
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+F O O T E R
+░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+ */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  background-color: _black;
+  margin-bottom: 0;
+  margin-top: auto !important;
+  padding: 1.2rem 0;
+
+  h3 {
+    color: _yellow;
+    font-size: 1.2rem;
+    font-weight: 100;
+    margin: 0 2rem;
+
+    &:before {
+      content: '\2500\2524 ';
+    }
+
+    &:after {
+      content: ' \251C\2500';
+    }
   }
 }

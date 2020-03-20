@@ -11,7 +11,7 @@ se agrega a un evento onClick u onMouseEnter...
     por la lógica que se ponga dentro de la función que la representa.
 */
 
-import { INCREMENT_LIKES } from '../actions'
+import { INCREMENT_LIKES, GET_POSTS } from '../actions'
 
 const posts = (state = [], action) => {
   /* Redux usa programación funcional, así que no se modifican los objetos sino
@@ -29,6 +29,11 @@ const posts = (state = [], action) => {
         ...state.slice(0, i), // Copia arreglo antes elemento que se modifica
         { ...state[i], likes: state[i].likes + 1 },
         ...state.slice(i + 1) // Copia arreglo después elemento que se modifica
+      ]
+    case GET_POSTS:
+      return [
+        ...state,
+        ...action.posts
       ]
     default:
       return state

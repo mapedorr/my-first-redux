@@ -6,6 +6,9 @@ import css from './styles/style.styl'
 import App from './components/App'
 import PhotoGrid from './components/PhotoGrid'
 import Single from './components/Single'
+import Posts from './components/Posts'
+import Albums from './components/Albums'
+import Todos from './components/Todos'
 // import React's router
 import { Router, Route, IndexRoute } from 'react-router'
 import { Provider } from 'react-redux'
@@ -32,6 +35,9 @@ const router = (
         {/* Estos componentes son lo que se recibirán como props.children en el
         componente Main */}
         <IndexRoute component={PhotoGrid}></IndexRoute>
+        <Route path='/posts' component={Posts}></Route>
+        <Route path='/albums' component={Albums}></Route>
+        <Route path='/todos' component={Todos}></Route>
         <Route path='/view/:postId' component={Single}></Route>
       </Route>
     </Router>

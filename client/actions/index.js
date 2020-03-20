@@ -15,6 +15,30 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 export const MAKE_SANDWICH = 'MAKE_SANDWICH'
 export const APOLOGIZE = 'APOLOGIZE'
 
+export const GET_POSTS = 'GET_POSTS'
+
+const BASE = 'https://jsonplaceholder.typicode.com'
+
+const fetchPosts = () => {
+  return fetch(`${BASE}/posts`).then((response) => response.json())
+}
+
+const getPosts = (posts) => {
+  return {
+    type: GET_POSTS,
+    posts
+  }
+}
+
+export const getAllPosts = () => {
+  return (dispatch) => {
+    return fetchPosts().then(
+      (posts) => dispatch(getPosts(posts)),
+      (error) => dispatch(apologize('The Sandwich Shop', forPerson, error))
+    )
+  }
+}
+
 // Acción para incrementar los likes en una foto
 export const incrementLike = (index) => {
   return {

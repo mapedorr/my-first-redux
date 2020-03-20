@@ -1,20 +1,13 @@
 {
-  "workbench.colorTheme": "Cobalt2",
-  "editor.fontFamily": "Operator Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 17,
+  "workbench.colorTheme": "GitHub Sharp",
+  "editor.fontFamily": "Hasklig",
+  // "editor.fontSize": 17,
   "editor.lineHeight": 25,
-  "editor.letterSpacing": 0.5,
+  // "editor.letterSpacing": 0.3,
   "files.trimTrailingWhitespace": true,
   "editor.fontWeight": "400",
-  "editor.cursorStyle": "line",
-  "editor.cursorWidth": 5,
+  // "editor.cursorStyle": "line",
+  // "editor.cursorWidth": 5,
   "editor.cursorBlinking": "solid",
-  // Very important: Install this plugin: https://github.com/be5invis/vscode-custom-css
-  // you'll need to change this to an absolute path on your computer
-  "vscode_custom_css.imports": [
-    "file:///D:/desarrollo_web/_proyectos_/_de_yo_/my-first-redux/.vscode/.vscodestyles.css"
-    // file:///C:/Users/grimt/.vscodestyles.css
-  ],
-  "vscode_custom_css.policy": true,
   "editor.renderWhitespace": "all"
 }

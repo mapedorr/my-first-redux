@@ -47,7 +47,7 @@ const middlewareAndTools = compose(
 // Crear el Store
 const store = createStore(
   reducer,
-  defaultState,
+  // defaultState,
   middlewareAndTools
 )
 
